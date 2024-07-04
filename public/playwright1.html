@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home > playwright</title>
+    <link rel="icon" href="ico/elegoo-_1_.ico" charset="utf-8">
+    <link rel="stylesheet" href="fontawesome-free-6.5.2-web/css/all.min.css">
+    <!-- <link rel="stylesheet" href="css/page.css"> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMKj2ffRuG8VIQf2qMZpQ5mZ5f3gvA19Ge9nKWh" crossorigin="anonymous"> -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+        }
+        .navbar-left {
+            background-color: #333;
+            color: white;
+            width: 200px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            transition: width 0.3s;
+        }
+        .navbar-left.collapsed {
+            width: 80px;
+        }
+        .navbar-left a {
+            color: white;
+            text-decoration: none;
+            /* align-items: center; */
+            display: block;
+            padding: 15px 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transition: font-size 0.3s;
+            text-align: left;
+        }
+        .navbar-left.collapsed a {
+            /* text-align: center; */
+            justify-content: center;
+            padding: 20px;
+            font-size: 0.8em;
+        }
+        .navbar-left a .icon {
+            margin-right: 10px;
+        }
+        .navbar-left.collapsed a .text {
+            display: none;
+        }
+        .navbar-left a:hover {
+            background-color: #3c3a3a;
+        }
+        .main-content {
+            margin-left: 200px;
+            padding: 20px;
+            width: calc(100% - 200px);
+            box-sizing: border-box;
+            transition: margin-left 0.3s, width 0.3s;
+        }
+        .main-content.collapsed {
+            margin-left: 60px;
+            width: calc(100% - 60px);
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+            margin: 30px auto;
+            /* height: 80vh; */
+            /* overflow-y: scroll; 添加垂直滚动条 */
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .styled-input, .styled-select {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .styled-input input, .styled-select select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            color: #818781;
+            transition: border-color 0.3s;
+        }
+        .styled-input input:focus, .styled-select select:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+        .styled-input label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 16px;
+            color: #999;
+            pointer-events: none;
+            transition: all 0.3s;
+        }
+        .styled-input input:focus + label,
+        .styled-input input:not(:placeholder-shown) + label {
+            top: -20px;
+            left: 10px;
+            font-size: 12px;
+            color: #4caf50;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #3c3a3a;
+        }
+        .results {
+            margin-top: 20px;
+            text-align: left;
+        }
+        .results h2 {
+            color: #3da554;
+            font-size: 18px;
+
+        }
+        .results div {
+            list-style-type: none;
+            background-color: #e9e9e9;
+            margin-bottom: 10px;
+            padding: none;
+            border-radius: 5px;
+        }
+        .toggle-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 200px;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: left 0.3s;
+        }
+        .toggle-btn.collapsed {
+            left: 60px;
+        }
+        .aaa{
+            color: #b0b7ae;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+            text-overflow: ellipsis;
+            transition: font-size 0.3s;
+            overflow: hidden;
+        }
+        .home-icon {
+            display: block;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="navbar-left" id="navbarLeft">
+        <!-- <a href="http://10.9.18.34:3000/homePage.html" class="home-icon"><i class="fas fa-home"><img src="elegoo-_1_.ico"></i></a> -->
+        <a href="/homePage.html" class="home-icon"><i class="fa-solid fa-house icon"></i><span class="text"> </span></a>
+        <!-- <span class="aaa">&emsp;&emsp;&emsp;&emsp;KAWO</span>-->
+        <!-- <hr> -->
+        <a href="/account.html"><i class="fa-solid fa-user icon"></i><span class="text"> Accounts</span></a>
+        <a href="/playwright.html"><i class="fa-solid fa-shield-cat icon"></i><span class="text"> Playwright</span></a>
+        <a href="/playwrightReport.html"><i class="fa-solid fa-book-open-reader icon"></i><span class="text"> PlaywrightReport</span></a>
+        <a href="/history.html"><i class="fa-solid fa-file-waveform icon"></i><span class="text"> History</span></a>
+        <a href="/media.html"><i class="fa-solid fa-photo-film icon"></i><span class="text"> Media</span></a>
+    </div>
+    <button class="toggle-btn" id="toggleBtn">☰</button>
+    <div class="main-content" id="mainContent">
+        <div class="container">
+            <h1><i class="fa-solid fa-shield-cat icon"></i>&emsp;Playwright Tests on KAWO</h1>
+            <form id="inputForm">
+                <!-- <div class="styled-input">
+                    <input type="text" id="urls" name="urls" placeholder=" " required>
+                    <label for="urls">Enter your urls(e.g. http://douyin/...)</label>
+                </div> -->
+                <div class="styled-select">
+                    <select id="platform" name="platform" required>
+                        <option value="" disabled selected>Choose a test environment</option>
+                        <option value="local">local</option>
+                        <option value="staging-app">staging-app</option>
+                        <option value="staging-beta">staging-beta</option>
+                        <option value="staging-delta">staging-delta</option>
+                    </select>
+                </div>
+                <button type="submit" id="submitBtn">Submit</button>
+                <!-- <button type="button" id="cancelBtn">Cancel</button> -->
+            </form>
+            <div class="results">
+                <!-- <h2>Execution Results:</h2> -->
+                <div id="resultsList"> 
+                    <!-- <h2>Output:</h2> -->
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const submitBtn = document.getElementById('submitBtn');
+            const logs = document.getElementById('resultsList');
+            const ws = new WebSocket(`ws://${window.location.host}`);
+
+            ws.onopen = () => {
+                console.log('WebSocket connected');
+            };
+
+            // ws.onmessage = (event) => {
+            //     const message = document.createElement('li');
+            //     message.textContent = event.data;
+            //     logs.appendChild(message);
+            //     logs.scrollTop = logs.scrollHeight;
+            // };
+
+            ws.onerror = (error) => {
+                console.error(`WebSocket error: ${error}`);
+                const message = document.createElement('div');
+                message.textContent = `WebSocket error: ${error.message}`;
+                logs.appendChild(message);
+                logs.scrollTop = logs.scrollHeight;
+            };
+            ws.onmessage = (event) => {
+                const message = event.data;
+                if (message === 'complete') {
+                    submitBtn.textContent = 'Submit';
+                    submitBtn.disabled = false;
+                    // localStorage.removeItem('isLoading');
+                } else {
+                    const logEntry = document.createElement('div');
+                    // logEntry.textContent = message;
+                    // logs.appendChild(logEntry);
+                    // logs.scrollTop = logs.scrollHeight;
+                    logs.textContent += message;
+                    logs.scrollTop = logs.scrollHeight;
+                }
+            };
+
+
+            ws.onclose = () => {
+                console.log('WebSocket disconnected');
+            };
+
+            document.getElementById('inputForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                
+                const platform = document.getElementById('platform').value;
+                
+
+                submitBtn.textContent = 'Loading...';
+                submitBtn.disabled = true;
+                // cancelBtn.disabled = false;
+                logs.textContent = ''
+
+                // Send a message to the server to run the Python script with parameters
+                ws.send(JSON.stringify({
+                    command: 'run-playwright',
+                    params: [platform]
+                }));
+                
+            });
+        });
+        // const cancelBtn = document.getElementById('cancelBtn');
+        // let abortController;
+        // document.getElementById('inputForm').addEventListener('submit', function(event) {
+        //     event.preventDefault(); // Prevent default form submission
+
+        //     const submitBtn = document.getElementById('submitBtn');
+        //     submitBtn.textContent = 'Testing...';
+        //     submitBtn.disabled = true;
+        //     // cancelBtn.disabled = false;
+        //     // Initialize a new AbortController
+        //     // abortController = new AbortController();
+        //     // const signal = abortController.signal;
+
+        //     // Get the input and dropdown values
+        //     // const homeUrl = document.getElementById('urls').value;
+        //     const platform = document.getElementById('platform').value;
+        //     // const opType = document.getElementById('opType').value;
+
+        //     // Send the values to the Node.js backend
+        //     fetch('/api/playwright', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({ 
+        //             // homeUrl,
+        //             platform
+        //             // opType 
+        //         }),
+        //         // signal: signal
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // if (!signal.aborted) {
+        //             const resultsList = document.getElementById('resultsList');
+        //             const resultItem = document.createElement('li');
+        //             resultItem.textContent = data.message;
+        //             resultsList.appendChild(resultItem);
+        //         // }
+        //         // resetForm();
+
+        //         submitBtn.textContent = 'Submit';
+        //         submitBtn.disabled = false;
+        //     })
+        //     .catch(error => {
+        //         // if (!signal.aborted) {
+        //             console.error('Error:', error);
+        //             alert('An error occurred. Please try again later.');
+        //             submitBtn.textContent = 'Submit';
+        //             submitBtn.disabled = false;
+        //         // }
+        //         // resetForm();
+        //     });
+        // });
+        // cancelBtn.addEventListener('click', function() {
+        //     if (abortController) {
+        //         abortController.abort(); // Abort the fetch request
+        //     }
+        //     resetForm();
+        // });
+        // function resetForm() {
+        //     // Clear form inputs
+        //     // document.getElementById('urls').value = '';
+        //     document.getElementById('platform').value = '';
+        //     // document.getElementById('opType').value = '';
+
+        //     // Reset buttons
+        //     submitBtn.textContent = 'Submit';
+        //     submitBtn.disabled = false;
+        //     cancelBtn.disabled = true;
+        // }
+
+        const toggleBtn = document.getElementById('toggleBtn');
+        const navbarLeft = document.getElementById('navbarLeft');
+        const mainContent = document.getElementById('mainContent');
+
+        toggleBtn.addEventListener('click', () => {
+            navbarLeft.classList.toggle('collapsed');
+            mainContent.classList.toggle('collapsed');
+            toggleBtn.classList.toggle('collapsed');
+        });
+    </script>
+</body>
+</html>
