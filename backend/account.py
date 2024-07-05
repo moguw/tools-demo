@@ -15,6 +15,7 @@ opType = sys.argv[3]
 headersInfo ={'key': "vdpidii6pcmvdd1mcdkd9cfxc"}
 list_url = homeUrl.split(",")
 
+
 def apiRequest(urls):
     try: 
         response = requests.post(url=urls,headers=headersInfo)      
@@ -38,7 +39,7 @@ def handAccounts():
                     sys.stdout.flush()
                     time.sleep(1)
                 except:
-                    print("check your bilibili accounts url!!",flush=1)
+                    print("检查你的account,请重新输入!!,",flush=1)
                     sys.stdout.flush()
                     datas = {
                             "Operation":"Add Account",
@@ -60,7 +61,7 @@ def handAccounts():
                     sys.stdout.flush()
                     with open("record.json","w", encoding='utf-8') as f:
                         json.dump(updated_data,f,indent=4,ensure_ascii=False)
-                    break
+                    continue
                 try:
                     #add/delete blibili accounts
                     bilibili_handle_url = 'https://api.newrank.cn/api/v2/custom/bz/kewo/account/manage?identifier=%s&opType=%s'%(bilibilii_dentifier_id,opType)
@@ -190,7 +191,7 @@ def handAccounts():
                         time.sleep(1)
                         sys.stdout.flush()
                     except:    
-                        print("check your input accounts url!!",flush=True)
+                        print("检查你的account,请重新输入!!",flush=True)
                         sys.stdout.flush()
                         datas = {
                                     "Operation":"Add Account",
@@ -212,7 +213,7 @@ def handAccounts():
                         sys.stdout.flush()
                         with open("record.json","w", encoding='utf-8') as f:
                             json.dump(updated_data,f,indent=4,ensure_ascii=False)
-                        break
+                        continue
                         
                     try:
                         handle_url = 'https://api.newrank.cn/api/custom/kewo/monitor-account/manage?identifier=%s&opType=%s&platform=%s'%(identifier,opType,platform)
