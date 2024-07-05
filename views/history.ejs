@@ -179,19 +179,22 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 25px 0;
+            /* margin: 25px 0; */
             text-align: left;
 
         }
         th, td {
             padding: 12px;
-            border-bottom: 1px solid #908e8e;
+            border-bottom: 1px solid #b9b6b6;
             color: #575454;
         }
         th {
+            /* position: sticky; */
             font-size: 18px;
             font-style: initial;
             color: #3c7aa3;
+            /* top: 0;
+            z-index: 2; */
             /* background-color: #e1f9fa; */
             
         }
@@ -278,34 +281,66 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .search-container {
+            position: relative;
+            margin-left: 80%;
+            top: -50px;
+            /* width: 200px; */
+        }
+        .search-container input[type="text"] {
+            padding: 8px;
+            font-size: 14px;
+            background-color: #ebfcfc;
+            border: 1px solid #9aa5a5;
+            border-radius: 15px;
+            width: 180px;
+        }
+        .search-container button {
+            padding: 5px 10px;
+            font-size: 14px;
+            border: none;
+            background-color: #c1daf5;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #d1e0f0;
+        }
     </style>
 </head>
 <body>
     <div class="navbar-left" id="navbarLeft">
         <!-- <a href="http://10.9.18.34:3000/homePage.html" class="home-icon"><i class="fas fa-home"><img src="elegoo-_1_.ico"></i></a> -->
-        <a href="/dashboard" class="home-icon"><i class="fa-solid fa-house icon" style="color: #cecfcf;"></i><span class="text"></span></a>
+        <a href="/dashboard" class="home-icon"><i class="fa-solid fa-house icon" style="color: #5acab3;"></i><span class="text"></span></a>
         <!-- <span class="aaa">&emsp;&emsp;&emsp;&emsp;KAWO</span>-->
         <!-- <hr> -->
-        <a href="/account"><i class="fa-solid fa-user icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> Accounts</span></a>
-        <a href="/playwright"><i class="fa-solid fa-shield-cat icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> Playwright</span></a>
-        <a href="/playwrightReport"><i class="fa-solid fa-book-open-reader icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> Report</span></a>
-        <a href="/history"><i class="fa-solid fa-file-waveform icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> History</span></a>
-        <a href="/media"><i class="fa-solid fa-photo-film icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;">Media</span></a>
-        <a href="/setting"><i class="fa-solid fa-gear icon" style="color: #cecfcf;" ></i><span class="text" style="color: #cecfcf;">Setting</span></a>
+        <a href="/account"><i class="fa-solid fa-user icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Accounts</span></a>
+        <a href="/playwright"><i class="fa-solid fa-masks-theater icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Playwright</span></a>
+        <a href="/playwrightReport"><i class="fa-solid fa-book-open-reader icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Report</span></a>
+        <a href="/history"><i class="fa-solid fa-file-waveform icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> History</span></a>
+        <a href="/media"><i class="fa-solid fa-photo-film icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;">Media</span></a>
+        <a href="/setting"><i class="fa-solid fa-gear icon" style="color: #bedfdd;" ></i><span class="text" style="color: #bedfdd;">Setting</span></a>
     </div>
     <button class="toggle-btn" id="toggleBtn">☰</button>
     <div class="main-content" id="mainContent">
         <div class="top-content">
             <span class="text" style="font-size: 16px; color: #000000; position: fixed; right: 65px;top: 20px;" onclick="showModal(event)"><i class="fa-solid fa-user-tie"></i>&emsp;Welcome <%= username %> </span>
             <form action="/logout" method="POST" style="position: fixed; right: 0px;top: 10px;"><button type="submit" style="background-color: #f4f4f4;"><i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff0000;"></i></button></form>
+            
         </div>
         <div class="container">
+            
             <h1><i class="fa-solid fa-file-waveform icon"></i>&emsp;Operation History
                 <span class="tooltip">
                     <span class="question-mark"><i class="fa-solid fa-circle-question" style="color: #760404;"></i></span>
                     <span class="tooltiptext">These histories will keep 30 days.</span>
                 </span>
             </h1>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search..." onkeypress="checkEnter(event)">
+                <!-- <button onclick="searchTable()">Search</button> -->
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -315,7 +350,7 @@
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody id="tableBody">
                     <% valuesList.forEach(row => { %>
                         <tr>
                             <% Object.values(row).forEach(value => { %>
@@ -364,6 +399,33 @@
             mainContent.classList.toggle('collapsed');
             toggleBtn.classList.toggle('collapsed');
         });
+        function searchTable() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const tableBody = document.getElementById('tableBody');
+        const rows = tableBody.getElementsByTagName('tr');
+        
+        for (let i = 0; i < rows.length; i++) {
+            let cells = rows[i].getElementsByTagName('td');
+            let match = false;
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].innerHTML.toLowerCase().indexOf(input) > -1) {
+                    match = true;
+                    break;
+                }
+            }
+            if (match) {
+                rows[i].style.display = "";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+
+    function checkEnter(event) {
+        if (event.key === "Enter") {
+            searchTable();
+        }
+    }
     </script>
 </body>
 </html>

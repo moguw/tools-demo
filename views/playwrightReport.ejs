@@ -125,15 +125,17 @@
         }
         button {
             padding: 10px 20px;
-            background-color: #dd0c0c;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            background-color: #e3f9fd;
+            border: 1px solid #9aa5a5;
+            border-radius: 10px;
+            color: rgb(95, 101, 94);
             cursor: pointer;
             font-size: 16px;
+            
+            
         }
         button:hover {
-            background-color: #3c3a3a;
+            background-color: #c3bcbc;
         }
         .results {
             margin-top: 20px;
@@ -187,7 +189,7 @@
             margin-bottom: 20px;
         }
         .loader {
-            border: 10px solid #f3f3f3;
+            border: 10px solid #e8f4f5;
             border-radius: 50%;
             border-top: 10px solid #db3d12;
             width: 80px;
@@ -245,28 +247,29 @@
 <body>
     <div class="navbar-left" id="navbarLeft">
         <!-- <a href="http://10.9.18.34:3000/homePage.html" class="home-icon"><i class="fas fa-home"><img src="elegoo-_1_.ico"></i></a> -->
-        <a href="/dashboard" class="home-icon"><i class="fa-solid fa-house icon" style="color: #cecfcf;"></i><span class="text"></span></a>
+        <a href="/dashboard" class="home-icon"><i class="fa-solid fa-house icon" style="color: #5acab3;"></i><span class="text"></span></a>
         <!-- <span class="aaa">&emsp;&emsp;&emsp;&emsp;KAWO</span>-->
         <!-- <hr> -->
-        <a href="/account"><i class="fa-solid fa-user icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> Accounts</span></a>
-        <a href="/playwright"><i class="fa-solid fa-shield-cat icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> Playwright</span></a>
-        <a href="/playwrightReport"><i class="fa-solid fa-book-open-reader icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> Report</span></a>
-        <a href="/history"><i class="fa-solid fa-file-waveform icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;"> History</span></a>
-        <a href="/media"><i class="fa-solid fa-photo-film icon" style="color: #cecfcf;"></i><span class="text" style="color: #cecfcf;">Media</span></a>
-        <a href="/setting"><i class="fa-solid fa-gear icon" style="color: #cecfcf;" ></i><span class="text" style="color: #cecfcf;">Setting</span></a>
+        <a href="/account"><i class="fa-solid fa-user icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Accounts</span></a>
+        <a href="/playwright"><i class="fa-solid fa-masks-theater icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;">Playwright</span></a>
+        <a href="/playwrightReport"><i class="fa-solid fa-book-open-reader icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Report</span></a>
+        <a href="/history"><i class="fa-solid fa-file-waveform icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> History</span></a>
+        <a href="/media"><i class="fa-solid fa-photo-film icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;">Media</span></a>
+        <a href="/setting"><i class="fa-solid fa-gear icon" style="color: #bedfdd;" ></i><span class="text" style="color: #bedfdd;">Setting</span></a>
     </div>
     <button class="toggle-btn" id="toggleBtn">☰</button>
     <div class="main-content" id="mainContent">
         <div class="top-content">
             <span class="text" style="font-size: 16px; color: #000000; position: fixed; right: 65px;top: 20px;" onclick="showModal(event)"><i class="fa-solid fa-user-tie"></i>&emsp;Welcome <%= username %> </span>
-            <form action="/logout" method="POST" style="position: fixed; right: 0px;top: 10px;"><button type="submit" style="background-color: #f4f4f4;"><i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff0000;"></i></button></form>
+            <form action="/logout" method="POST" style="position: fixed; right: 0px;top: 10px;"><button type="submit" style="background-color: #f4f4f4;border: none;"><i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff0000;"></i></button></form>
         </div>
         <div class="container">
             
-            <iframe id="reportFrame" src="/allure-report/index.html"></iframe>
-            <button id="generateButton" onclick="generateReport()">Generate Newest Report
+            <iframe id="reportFrame" src="/allure-report/index.html" style="padding: 5px;"></iframe>
+            <button id="generateButton" onclick="generateReport()" style="margin-left: 85%;">Generate Newest
                 <div id="buttonLoader" class="loader"></div>
             </button>
+            
         </div>
     </div>
     <div id="infoModal" class="modal">

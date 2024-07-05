@@ -233,6 +233,9 @@ function getJsonData(callback) {
 }
 app.get('/history', (req, res) => {
     getJsonData((err, valuesList) => {
+        if (!req.session.loggedIn) {
+            return res.redirect('/login');
+        }
         if (err) {
             return res.status(500).send('Error reading JSON file');
         }
