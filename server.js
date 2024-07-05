@@ -129,7 +129,7 @@ wss.on('connection', (ws) => {
             const { command, params } = JSON.parse(message);
 
             if (command === 'run-python') {
-                const process = spawn('/opt/homebrew/bin/python3.11', ['backend/account.py', ...params]);
+                const process = spawn('python3.11', ['backend/account.py', ...params]);
 
                 process.stdout.on('data', (data) => {
                     ws.send(data.toString());
@@ -150,7 +150,7 @@ wss.on('connection', (ws) => {
                 });
             }
             if (command === 'run-playwright') {
-                const process = spawn('/opt/homebrew/bin/python3.11', ['backend/playwright.py', ...params]);
+                const process = spawn('python3.11', ['backend/playwright.py', ...params]);
 
                 process.stdout.on('data', (data) => {
                     ws.send(data.toString());
@@ -186,7 +186,7 @@ wss.on('connection', (ws) => {
 });
 //PlaywrightReport.py
 app.post('/api/generate-report', (req, res) => {
-    exec('/opt/homebrew/bin/python3.11 backend/playwright-allure-report.py', (error, stdout, stderr) => {
+    exec('python3.11 backend/playwright-allure-report.py', (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`);
             res.status(500).send('Error generating report');

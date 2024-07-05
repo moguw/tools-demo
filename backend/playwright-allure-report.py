@@ -1,10 +1,12 @@
 import subprocess,sys,time,json
 from datetime import datetime
- 
-shells_parametrize = "allure generate /Users/nan/Desktop/new_last_1/playwright-testing-kawo-project/my-allure-results  --clean -o allure-report"
+import path_setting
+playwright_path_value = path_setting.get_playwright_path()
+shells_parametrize = "allure generate %s/playwright-testing-kawo-project/my-allure-results  --clean -o allure-report"%playwright_path_value
 def playwrightReport():
         print(subprocess.call(shells_parametrize,shell=True)) 
-        with open('/Users/nan/Desktop/new_last_1/playwright-testing-kawo-project/summary.json', 'r', encoding='utf-8') as f:
+        file_path = f"{playwright_path_value}/playwright-testing-kawo-project/summary.json"
+        with open(file_path, 'r', encoding='utf-8') as f:
             datas_summary = json.load(f) 
         with open('record.json', 'r', encoding='utf-8') as f:
             datas_record = json.load(f)

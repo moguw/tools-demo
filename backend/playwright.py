@@ -1,14 +1,17 @@
 import subprocess,sys,json,time
+import path_setting
  
 test_env = sys.argv[1]
 
 def playwright():
-        shells_parametrize = "cd /Users/nan/Desktop/new_last_1/playwright-testing-kawo-project &&  rm -rf my-allure-results && npm run %s"%test_env
+        playwright_path_value = path_setting.get_playwright_path()
+        shells_parametrize = "cd %s/playwright-testing-kawo-project &&  rm -rf my-allure-results && npm run %s"%(playwright_path_value,test_env)
         if test_env != 'local':
             print("choose local env")
         else:
             print(subprocess.call(shells_parametrize,shell=True))
-            with open("/Users/nan/Desktop/new_last_1/playwright-testing-kawo-project/summary.json","r", encoding='utf-8') as f:
+            file_path = f"{playwright_path_value}/playwright-testing-kawo-project/summary.json"
+            with open(file_path,"r", encoding='utf-8') as f:
                   datas = json.load(f)
                   # print(len(data['failed']))
             test_datas = {
