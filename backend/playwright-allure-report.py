@@ -23,7 +23,7 @@ def playwrightReport():
         test_datas = {
                 "Operation":"Generate Report",
                 'Identifier ID / URLs':'-',
-                "Result": "%s failed"%len(datas_summary['failed']),
+                "Result": "Generate report finished",
                 "Nickname": "-",
                 "Platform": latest_operation['Platform'],
                 'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
