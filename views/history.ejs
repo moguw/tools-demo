@@ -210,7 +210,7 @@
         
         .tooltip .tooltiptext {
             visibility: hidden;
-            width: 230px;
+            width: 210px;
             background-color: #d4d2d2;
             color: #1d1c1c;
             text-align: left;
@@ -220,7 +220,7 @@
             z-index: 1;
             bottom: 100%; /* Position the tooltip above the text */
             left: 10%;
-            margin-left: -130px;
+            margin-left: -100px;
             opacity: 0;
             transition: opacity 0.3s;
             font-size: 14px;
@@ -283,8 +283,8 @@
         }
         .search-container {
             position: relative;
-            margin-left: 80%;
-            top: -50px;
+            margin-left: 70%;
+            top: -70px;
             /* width: 200px; */
         }
         .search-container input[type="text"] {
@@ -296,13 +296,14 @@
             width: 180px;
         }
         .search-container button {
-            padding: 5px 10px;
+            padding: 8px 10px;
             font-size: 14px;
-            border: none;
-            background-color: #c1daf5;
-            color: white;
-            border-radius: 4px;
+            border: 1px solid #9aa5a5;;
+            background-color: #ebfcfc;
+            color: rgb(131, 129, 129);
+            border-radius: 12px;
             cursor: pointer;
+            margin-left: 10px;
         }
         .search-container button:hover {
             background-color: #d1e0f0;
@@ -316,7 +317,7 @@
         <!-- <span class="aaa">&emsp;&emsp;&emsp;&emsp;KAWO</span>-->
         <!-- <hr> -->
         <a href="/account"><i class="fa-solid fa-user icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Accounts</span></a>
-        <a href="/playwright"><i class="fa-solid fa-masks-theater icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Playwright</span></a>
+        <a href="/playwright"><i class="fa-solid fa-masks-theater icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;">Playwright</span></a>
         <a href="/playwrightReport"><i class="fa-solid fa-book-open-reader icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Report</span></a>
         <a href="/history"><i class="fa-solid fa-file-waveform icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> History</span></a>
         <a href="/media"><i class="fa-solid fa-photo-film icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;">Media</span></a>
@@ -326,7 +327,7 @@
     <div class="main-content" id="mainContent">
         <div class="top-content">
             <span class="text" style="font-size: 16px; color: #000000; position: fixed; right: 65px;top: 20px;" onclick="showModal(event)"><i class="fa-solid fa-user-tie"></i>&emsp;Welcome <%= username %> </span>
-            <form action="/logout" method="POST" style="position: fixed; right: 0px;top: 10px;"><button type="submit" style="background-color: #f4f4f4;"><i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff0000;"></i></button></form>
+            <form action="/logout" method="POST" style="position: fixed; right: 0px;top: 10px;"><button type="submit" style="background-color: #f4f4f4;border: none;"><i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff0000;"></i></button></form>
             
         </div>
         <div class="container">
@@ -334,12 +335,13 @@
             <h1><i class="fa-solid fa-file-waveform icon"></i>&emsp;Operation History
                 <span class="tooltip">
                     <span class="question-mark"><i class="fa-solid fa-circle-question" style="color: #760404;"></i></span>
-                    <span class="tooltiptext">These histories will keep 30 days.</span>
+                    <span class="tooltiptext" style="font-weight: 80;">These histories will keep 30 days.</span>
                 </span>
             </h1>
             <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Search..." onkeypress="checkEnter(event)">
+                <input type="text" id="searchInput" placeholder="Search... " onkeypress="checkEnter(event)">
                 <!-- <button onclick="searchTable()">Search</button> -->
+                <button onclick="refreshPage()">Refresh <i class="fa-solid fa-rotate"></i></button> <!-- 添加刷新按钮 -->
             </div>
             <table>
                 <thead>
@@ -426,6 +428,9 @@
             searchTable();
         }
     }
+    function refreshPage() {
+            window.location.reload();
+        }
     </script>
 </body>
 </html>

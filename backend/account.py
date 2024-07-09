@@ -35,12 +35,10 @@ def handAccounts():
                     bilibili_identifer_response = apiRequest(bilibili_identifer_url)
                     bilibili_identifier_msg = bilibili_identifer_response.json()['msg']
                     bilibilii_dentifier_id = bilibili_identifer_response.json()['data']['identifier']
-                    print(">>"*5,flush=True)
                     print('bilibili_identifier_msg:',bilibili_identifier_msg,'bilibilii_dentifier_id:',bilibilii_dentifier_id,flush=1)
                     sys.stdout.flush()
                     time.sleep(1)
                 except:
-                    print(">>"*5,flush=True)
                     print("检查你的account,请重新输入!!,",flush=1)
                     sys.stdout.flush()
                     datas = {
@@ -134,7 +132,6 @@ def handAccounts():
                     wx_handle_url = 'https://api.newrank.cn/api/custom/kewo/monitor-account/manage?identifier=%s&opType=%s&platform=%s'%(list_url[i],opType,platform)
                     response = apiRequest(wx_handle_url)
                     wx_handle_msg = response.json()['msg']
-                    print(">>"*5,flush=True)
                     print('wx_handle_msg:',wx_handle_msg,flush=1)
                     sys.stdout.flush()
                     time.sleep(1)
@@ -165,7 +162,6 @@ def handAccounts():
                     with open("record.json","w", encoding='utf-8') as f:
                         json.dump(updated_data,f,indent=4,ensure_ascii=False)
                 except:
-                    print(">>"*5,flush=True)
                     print("Can't get weChat accounts data result",flush=1)
                     sys.stdout.flush()
                     error_datas = {
@@ -202,9 +198,9 @@ def handAccounts():
                         datas = {
                                     "Operation":"Add Account",
                                     'Identifier ID / URLs':list_url[i],
-                                    'Result':'获取identifier失败',
+                                    'Result':'获取identifier失败,%s账号异常'%platform,
                                     'Nickname':'null',
-                                    'Platform':'%s账号异常'%platform,
+                                    'Platform':platform,
                                     'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
                             }
                         # datas = [{"identifier_msg:"+identifier_msg, 'identifier:'+identifier,'handle_msg:'+handle_msg,'verify_msg:'+verify_msg,"nickname:"+nickname,'successful,congratulations!!'}]
