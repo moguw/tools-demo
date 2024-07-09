@@ -191,8 +191,8 @@
         .home-icon {
             display: block;
             text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 35px;
+            margin-bottom: 15px;
         }
         .modal {
             display: none;
@@ -237,25 +237,25 @@
 <body>
     <div class="navbar-left" id="navbarLeft">
         <!-- <a href="#" class="home-icon"><i class="fas fa-home"><img src="elegoo-_1_.ico"></i></a> -->
-        <a href="/dashboard" class="home-icon"><i class="fa-solid fa-house icon" style="color: #5acab3;"></i><span class="text"> </span></a>
+        <a href="/dashboard" class="home-icon"><i class="fa-solid fa-house icon" style="color: #5acab3;"></i><span class="text"></span></a>
         <!-- <span class="aaa">&emsp;&emsp;&emsp;&emsp;KAWO</span> -->
         <!-- <hr>  -->
         <!-- <a href="http://10.9.18.34:3000/Accounts.html">Accounts</a> -->
         <!-- <a href="#">Playwright</a> -->
         <a href="/account"><i class="fa-solid fa-user icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Accounts</span></a>
-        <a href="/playwright"><i class="fa-solid fa-masks-theater icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Playwright</span></a>
+        <a href="/playwright"><i class="fa-solid fa-masks-theater icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;">Playwright</span></a>
         <a href="/playwrightReport"><i class="fa-solid fa-book-open-reader icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> Report</span></a>
         <a href="/history"><i class="fa-solid fa-file-waveform icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;"> History</span></a>
         <a href="/media"><i class="fa-solid fa-photo-film icon" style="color: #bedfdd;"></i><span class="text" style="color: #bedfdd;">Media</span></a>
         <a href="/setting"><i class="fa-solid fa-gear icon" style="color: #bedfdd;" ></i><span class="text" style="color: #bedfdd;">Setting</span></a>
         
     </div>
-    <button class="toggle-btn" id="toggleBtn">☰</button> 
+    <button class="toggle-btn" id="toggleBtn" style="background-color: #333;">☰</button> 
     
     <div class="main-content" id="mainContent">
         <div class="top-content">
             <span class="text" style="font-size: 16px; color: #000000; position: fixed; right: 65px;top: 20px;" onclick="showModal(event)"><i class="fa-solid fa-user-tie"></i>&emsp;Welcome <%= username %> </span>
-            <form action="/logout" method="POST" style="position: fixed; right: 0px;top: 10px;"><button type="submit" style="background-color: #f4f4f4;"><i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff0000;"></i></button></form>
+            <form action="/logout" method="POST" style="position: fixed; right: 0px;top: 10px;"><button type="submit" style="background-color: #f4f4f4; border: none;"><i class="fa-solid fa-right-from-bracket fa-xl" style="color: #ff0000;"></i></button></form>
         </div> 
         <div class="container">
             <h1><i class="fa-solid fa-house icon"></i>&emsp;HOME PAGE</h1>

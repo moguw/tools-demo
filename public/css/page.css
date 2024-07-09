@@ -117,15 +117,15 @@ h1 {
 }
 button {
     padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    background-color: #ddd2dd;
+    border: 1px solid #9aa5a5;
+    border-radius: 8px;
+    color: rgb(95, 101, 94);
     cursor: pointer;
     font-size: 16px;
 }
 button:hover {
-    background-color: #3c3a3a;
+    background-color: #c3bcbc;
 }
 .results {
     margin-top: 20px;
@@ -170,8 +170,8 @@ button:hover {
 .home-icon {
     display: block;
     text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 35px;
+    margin-bottom: 15px;
 }
 .tooltip {
     top:-10px;
@@ -184,8 +184,8 @@ button:hover {
 }
 .tooltip .tooltiptext {
     visibility: hidden;
-    width: 300px;
-    background-color: #d4d2d2;
+    width: 350px;
+    background-color: #e6e3e3;
     color: #1d1c1c;
     text-align: left;
     border-radius: 6px;
@@ -194,7 +194,7 @@ button:hover {
     z-index: 1;
     bottom: 100%; /* Position the tooltip above the text */
     left: 0%;
-    margin-left: -130px;
+    margin-left: -170px;
     opacity: 0;
     transition: opacity 0.3s;
     font-size: 14px;

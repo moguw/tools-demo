@@ -1,98 +1,26 @@
 [
     {
         "Operation": "Add Account",
-        "Identifier ID / URLs": "63463@finder",
-        "Result": "账号添加到定制列表失败！账号已存在！",
-        "Nickname": "山河璀璨",
-        "Platform": "sph",
-        "Execution Time": "2024-07-04 18:39:26"
-    },
-    {
-        "Operation": "Add Account",
-        "Identifier ID / URLs": "6859c@finder",
-        "Result": "账号添加到定制列表失败！账号已存在！",
-        "Nickname": "Tbao陶",
-        "Platform": "sph",
-        "Execution Time": "2024-07-04 18:39:23"
-    },
-    {
-        "Operation": "Add Account",
-        "Identifier ID / URLs": "f94fa@finder",
-        "Result": "账号添加到定制列表失败！账号已存在！",
-        "Nickname": "酒店行业那些事儿",
-        "Platform": "sph",
-        "Execution Time": "2024-07-04 18:39:21"
+        "Identifier ID / URLs": "5d9285760000000001019c43",
+        "Result": "定制账号列表已存在此账号",
+        "Nickname": "胸外科医生谷志涛",
+        "Platform": "xhs",
+        "Execution Time": "2024-07-09 12:17:19"
     },
     {
         "Operation": "Generate Report",
         "Identifier ID / URLs": "-",
-        "Result": "testcase failed:0",
-        "Nickname": "-",
-        "Platform": "locals",
-        "Execution Time": "2024-07-04 18:33:10"
-    },
-    {
-        "Operation": "Generate Report",
-        "Identifier ID / URLs": "-",
-        "Result": "testcase failed:0",
+        "Result": "0 failed",
         "Nickname": "-",
         "Platform": "local",
-        "Execution Time": "2024-07-04 18:32:30"
-    },
-    {
-        "Operation": "Generate Report",
-        "Identifier ID / URLs": "-",
-        "Result": "testcase failed:0",
-        "Nickname": "-",
-        "Platform": "local",
-        "Execution Time": "2024-07-04 18:32:02"
-    },
-    {
-        "Operation": "Generate Report",
-        "Identifier ID / URLs": "-",
-        "Result": "testcase failed:0",
-        "Nickname": "-",
-        "Platform": "local",
-        "Execution Time": "2024-07-04 18:30:59"
+        "Execution Time": "2024-07-09 12:17:01"
     },
     {
         "Operation": "Playwright",
         "Identifier ID / URLs": "-",
-        "Result": "testcase failed:0",
-        "Nickname": "-",
-        "Platform": "locals",
-        "Execution Time": "2024-07-04 18:30:44"
-    },
-    {
-        "Operation": "Add Account",
-        "Identifier ID / URLs": "https://",
-        "Result": "获取identifier失败",
-        "Nickname": "null",
-        "Platform": "xhs账号不存在",
-        "Execution Time": "2024-07-04 18:21:48"
-    },
-    {
-        "Operation": "Add Account",
-        "Identifier ID / URLs": "2dc97@finder",
-        "Result": "账号添加到定制列表失败！账号已存在！",
-        "Nickname": "锦江酒店集团加盟服务",
-        "Platform": "sph",
-        "Execution Time": "2024-07-04 18:20:43"
-    },
-    {
-        "Operation": "Add Account",
-        "Identifier ID / URLs": "adbc6@finder",
-        "Result": "账号添加到定制列表失败！账号已存在！",
-        "Nickname": "锦江酒店京畿特区文宣",
-        "Platform": "sph",
-        "Execution Time": "2024-07-04 18:20:34"
-    },
-    {
-        "Operation": "Playwright",
-        "Identifier ID / URLs": "-",
-        "Result": "testcase failed:0",
+        "Result": "5 Test Done, 7s used, 0 Failed ❌ ",
         "Nickname": "-",
         "Platform": "local",
-        "Execution Time": "2024-07-04 18:30:44"
+        "Execution Time": "2024-07-09 11:17:52"
     }
 ]
