@@ -9,7 +9,7 @@ def playwright():
       test_datas_1 = {
                   "Operation": "Playwright",
                   'Identifier ID / URLs': '-',
-                  "Result": "Testing, Wait one moment",
+                  "Result": "⌛️Testing..., Wait one moment",
                   "Nickname": "-",
                   "Platform": test_env,
                   'Execution Time':start
@@ -58,7 +58,7 @@ def playwright():
             test_datas_2 = {
                   "Operation": "Playwright",
                   'Identifier ID / URLs': '-', 
-                  "Result": "%s Test Done, %s used, %s Failed ❌ "%(len(datas['passed']+datas['warned']+datas['skipped']+datas['timedOut']+datas['flakey']+datas["interrupted"]),time_diff_str,len(datas['failed'])),
+                  "Result": " Total test: %s; Total time: %s; Failed: %s "%(len(datas['passed']+datas['warned']+datas['skipped']+datas['timedOut']+datas['flakey']+datas["interrupted"]),time_diff_str,len(datas['failed'])),
                   "Nickname": "-",
                   "Platform": test_env,
                   'Execution Time':start
@@ -70,7 +70,7 @@ def playwright():
             #       test_datas_2 = [test_datas_2]
             if data and isinstance(data, list):
                   for i, entry in enumerate(data):
-                        if entry["Operation"] == "Playwright" and entry["Result"] == "Testing, Wait one moment":
+                        if entry["Operation"] == "Playwright" and entry["Result"] == "⌛️Testing..., Wait one moment":
                               data[i] = test_datas_2
                               break
             # updated_data = test_datas_2 + data

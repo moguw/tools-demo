@@ -96,8 +96,12 @@
             text-align: center;
             margin: 10px auto;
             height: 83vh;
-            
-            
+        }
+        .container_1{
+            align-items: center;
+            display: flex;
+            justify-content: space-around; 
+
         }
         h1 {
             color: #333;
@@ -229,6 +233,55 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .box {
+            width: 200px;
+            height: 200px;
+            /* background: linear-gradient(145.14deg, #d8e4e3 0%, #def1fc 46.02%, #eaeafb 56.48%, #e8d1da 63.4%, #c7bce0 77.97%, #e6c7c4 80.93%, #f9edb3 100%); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: rgb(57, 55, 55);
+            font-size: 16px;
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 1px solid #bcb9b9;
+        }
+        
+        .box:hover {
+            transform: scale(1.1);
+            background-color: #2980b9;
+        }
+        .modalss {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 55%;
+            width: 50%;
+            height: 52%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(145.14deg, #d8e4e3 0%, #def1fc 46.02%, #eaeafb 56.48%, #e8d1da 63.4%, #c7bce0 77.97%, #e5cecc 80.93%, #e1d1f0 100%);
+            /* background-color: rgb(221, 241, 247); */
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            border-radius: 5px;
+        }
+        .modalss.show {
+            display:block;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-body {
+            margin-top: 5px;
+        }
+        .closess {
+            cursor: pointer;
+        }
                 /* form div {
         margin-bottom: 10px;
         } */
@@ -260,13 +313,28 @@
         <div class="container">
             <h1><i class="fa-solid fa-house icon"></i>&emsp;HOME PAGE</h1>
             <h3>Before use this platform, you need install some tools.</h3>
-            <p>1. nodeJs</p>
-            <p>2. python(version: 3.11)</p>
-            <p>3. express-session(npm install)</p>
-            <p>4. allure(playwright)</p>
-            <p>5. multer(npm install)</p>
-            <p>6. xml2js(npm install)</p>
-            <p>7. express(npm install)</p>
+            <div class="container_1">
+                <div class="box" onclick="navigateTo('Account')">Handle Account</div>
+                <div class="box" onclick="navigateTo('Playwright')">Playwright Test</div>
+                <div class="box" onclick="navigateTo('Report')">Playwright Report</div>
+                <div class="box" onclick="navigateTo('History')">History</div> 
+            </div>
+            <p>
+            <div class="container_1">
+                <div class="box" onclick="navigateTo('xml2js')">xml2js</div>
+                <div class="box" onclick="navigateTo('express')">express</div>
+                <div class="box" onclick="navigateTo('uuidv4')">uuidv4</div>
+                <div class="box" onclick="navigateTo('ws')">ws</div> 
+            </div>
+            <div id="modalss" class="modalss">
+                <div class="modal-header">
+                    <h2 id="modalTitle">Modal Title</h2>
+                    <span class="closess" onclick="closeModalss()">&times;</span>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <p>Modal content goes here...</p>
+                </div>
+            </div>
         </div>       
     </div>
     <div id="infoModal" class="modal">
@@ -280,6 +348,48 @@
     </div>
 
     <script>
+        function navigateTo(content) {
+            const modal = document.getElementById('modalss');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            switch(content) {
+                case 'Account':
+                    modalTitle.textContent = 'Handle Account';
+                    modalBody.innerHTML = '<p>Help CS Teams handle accounts in KAWO platform</p>';
+                    break;
+                case 'Playwright':
+                    modalTitle.textContent = 'Playwright';
+                    modalBody.innerHTML = '<p>Use playwright to test KAWO platform</p>';
+                    break;
+                case 'Report':
+                    modalTitle.textContent = 'Report';
+                    modalBody.innerHTML = '<p>use allure report to show up result of playwright</p>';
+                    break;
+                case 'History':
+                    modalTitle.textContent = 'History';
+                    modalBody.innerHTML = '<p>History content goes here...</p>';
+                    break;
+                default:
+                    modalTitle.textContent = 'Modal Title';
+                    modalBody.innerHTML = '<p>Modal content goes here...</p>';
+                    break;
+            }
+            modal.classList.add('show');
+        }
+
+
+        function closeModalss() {
+            const modal = document.getElementById('modalss');
+            modal.classList.remove('show');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalss');
+            if (event.target == modal) {
+                closeModalss();
+            }
+        }
         function showModal(event) {
             event.preventDefault();  // 阻止超链接的默认行为
             console.log('Showing modal...');

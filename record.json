@@ -1,18 +1,18 @@
 [
     {
-        "Operation": "Playwright",
-        "Identifier ID / URLs": "-",
-        "Result": "5 Test Done, 10s used, 0 Failed ❌ ",
-        "Nickname": "-",
-        "Platform": "local",
-        "Execution Time": "2024-07-09 16:16:40"
-    },
-    {
         "Operation": "Generate Report",
         "Identifier ID / URLs": "-",
         "Result": "Generate report finished",
         "Nickname": "-",
         "Platform": "local",
-        "Execution Time": "2024-07-09 16:13:28"
+        "Execution Time": "2024-07-11 10:03:41"
+    },
+    {
+        "Operation": "Playwright",
+        "Identifier ID / URLs": "-",
+        "Result": " Total test: 5; Total time: 6s; Failed: 0 ",
+        "Nickname": "-",
+        "Platform": "local",
+        "Execution Time": "2024-07-10 18:52:13"
     }
 ]
