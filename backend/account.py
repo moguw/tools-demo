@@ -46,7 +46,7 @@ def handAccounts():
                     datas = {
                             "Operation":"Add Account",
                             'Identifier ID / URLs':list_url[i],
-                            'Result':'bilibili账号异常',
+                            'Result':'%s账号异常'%platform,
                             'Nickname':'-',
                             'Platform':platform,
                             'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
@@ -72,6 +72,13 @@ def handAccounts():
                     print('bilibili_handle_msg:',bilibili_handle_msg,flush=1)
                     sys.stdout.flush()
                     time.sleep(1)
+                    k = 0
+                    while bilibili_handle_msg == '账号冲榜失败' and k<3:
+                            print('重试中...',flush=True)
+                            bilibili_handle_response = apiRequest(bilibili_handle_url)
+                            print('bilibili_handle_msg:',bilibili_handle_msg,flush=True)
+                            sys.stdout.flush()
+                            k=k+1
                 except:
                     print("handle bilibili accounts failed!!",flush=1)
                     sys.stdout.flush()
@@ -85,7 +92,7 @@ def handAccounts():
                             bilibili_nickname = bilibili_verify_response.json()['data']['list'][0]['nickname']
                         except:
                             bilibili_nickname = "暂未获取到"
-                            print("No nickname has been obtained yet,please wait a moment",flush=1)
+                            print("bilibili_nickname:",bilibili_nickname,flush=1)
                             sys.stdout.flush()
                     else:
                         bilibili_nickname = bilibilii_dentifier_id
@@ -138,6 +145,13 @@ def handAccounts():
                     print('wx_handle_msg:',wx_handle_msg,flush=1)
                     sys.stdout.flush()
                     time.sleep(1)
+                    k = 0
+                    while wx_handle_msg == '账号冲榜失败' and k<3:
+                            print('重试中...',flush=True)
+                            response = apiRequest(wx_handle_url)
+                            print('bilibili_handle_msg:',wx_handle_msg,flush=True)
+                            sys.stdout.flush()
+                            k=k+1
                     wx_verify_url = 'https://api.newrank.cn/api/custom/kewo/monitor-account/list?platform=%s&size=10&page=1&identifier=%s'%(platform,list_url[i])
                     response = apiRequest(wx_verify_url)
                     if opType == 'add':
@@ -170,7 +184,7 @@ def handAccounts():
                     error_datas = {
                                     "Operation":"Add Account",
                                     'Identifier ID / URLs':list_url[i],
-                                    'Result':'WX账号异常',
+                                    'Result':'%s账号异常'%platform,
                                     'Nickname':'-',
                                     'Platform':platform,
                                     'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
@@ -227,6 +241,13 @@ def handAccounts():
                         print('handle_msg:',handle_msg,flush=True)
                         time.sleep(1)
                         sys.stdout.flush()
+                        k = 0
+                        while handle_msg == '账号冲榜失败' and k<3:
+                            print('重试中...',flush=True)
+                            handle_url_response = apiRequest(handle_url)
+                            print('handle_msg:',handle_msg,flush=True)
+                            sys.stdout.flush()
+                            k=k+1
                     except:
                         print("handle your accounts failed!!",flush=True)
                         sys.stdout.flush()

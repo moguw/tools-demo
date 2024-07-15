@@ -64,7 +64,7 @@ app.post('/login', (req, res) => {
     const { username, password } = req.body;
   
     // 简单的登录验证逻辑
-    if (username === 'administrator' && password === 'password') {
+    if ((username === 'administrator' && password === 'password') || (username === 'melody' && password === 'melody')) {
       req.session.loggedIn = true;
       req.session.username = username;
       res.redirect('/dashboard');
