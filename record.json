@@ -1,5 +1,85 @@
 [
     {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "2579888941577904",
+        "Result": "成功",
+        "Nickname": "惠特莫尔CamWhitmore",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 15:10:00"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "1748666848649994",
+        "Result": "成功",
+        "Nickname": "萨尔AlexSarr",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 15:09:57"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "240116505258615",
+        "Result": "定制账号列表已存在此账号",
+        "Nickname": "艾顿DeandreAyton",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 15:09:54"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "2579888941577904",
+        "Result": "账号冲榜失败",
+        "Nickname": "暂未获取到",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 15:09:11"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "1748666848649994",
+        "Result": "账号冲榜失败",
+        "Nickname": "暂未获取到",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 15:09:07"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "240116505258615",
+        "Result": "成功",
+        "Nickname": "艾顿DeandreAyton",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 15:09:00"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "3952086857039068",
+        "Result": "定制账号列表已存在此账号",
+        "Nickname": "爱德华兹AnthonyEdwards",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 11:40:40"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "3952086857039068",
+        "Result": "成功",
+        "Nickname": "爱德华兹AnthonyEdwards",
+        "Platform": "dy",
+        "Execution Time": "2024-07-15 10:59:45"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "5d9285760000000001019c43",
+        "Result": "定制账号列表已存在此账号",
+        "Nickname": "胸外科医生谷志涛",
+        "Platform": "xhs",
+        "Execution Time": "2024-07-11 17:01:26"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "5d9285760000000001019c43",
+        "Result": "定制账号列表已存在此账号",
+        "Nickname": "胸外科医生谷志涛",
+        "Platform": "xhs",
+        "Execution Time": "2024-07-11 16:58:07"
+    },
+    {
         "Operation": "Generate Report",
         "Identifier ID / URLs": "-",
         "Result": "Generate report finished",

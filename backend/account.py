@@ -35,18 +35,20 @@ def handAccounts():
                     bilibili_identifer_response = apiRequest(bilibili_identifer_url)
                     bilibili_identifier_msg = bilibili_identifer_response.json()['msg']
                     bilibilii_dentifier_id = bilibili_identifer_response.json()['data']['identifier']
+                    print(">>"*5,flush=True)
                     print('bilibili_identifier_msg:',bilibili_identifier_msg,'bilibilii_dentifier_id:',bilibilii_dentifier_id,flush=1)
                     sys.stdout.flush()
                     time.sleep(1)
                 except:
+                    print(">>"*5,flush=True)
                     print("检查你的account,请重新输入!!,",flush=1)
                     sys.stdout.flush()
                     datas = {
                             "Operation":"Add Account",
                             'Identifier ID / URLs':list_url[i],
-                            'Result':'获取identifier失败',
-                            'Nickname':'null',
-                            'Platform':'%s账号异常'%platform,
+                            'Result':'bilibili账号异常',
+                            'Nickname':'-',
+                            'Platform':platform,
                             'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
                             }
                     # datas = [{"identifier_msg:"+identifier_msg, 'identifier:'+identifier,'handle_msg:'+handle_msg,'verify_msg:'+verify_msg,"nickname:"+nickname,'successful,congratulations!!'}]
@@ -57,7 +59,7 @@ def handAccounts():
 
                     updated_data = datas + data
 
-                    print(datas,flush=True)
+                    print('Result:','%s账号异常'%platform,flush=True)
                     sys.stdout.flush()
                     with open("record.json","w", encoding='utf-8') as f:
                         json.dump(updated_data,f,indent=4,ensure_ascii=False)
@@ -82,7 +84,7 @@ def handAccounts():
                         try:
                             bilibili_nickname = bilibili_verify_response.json()['data']['list'][0]['nickname']
                         except:
-                            bilibili_nickname = "null"
+                            bilibili_nickname = "暂未获取到"
                             print("No nickname has been obtained yet,please wait a moment",flush=1)
                             sys.stdout.flush()
                     else:
@@ -102,7 +104,7 @@ def handAccounts():
                             datas = [datas]
 
                     updated_data = datas + data
-                    print(datas,flush=1)
+                    print("verify_msg:",bilibili_verify_msg,'Nickname:',bilibili_nickname,flush=True)
                     sys.stdout.flush()
                     with open("record.json","w", encoding='utf-8') as f:
                         json.dump(updated_data,f,indent=4,ensure_ascii=False)
@@ -112,9 +114,9 @@ def handAccounts():
                     error_datas = {
                                     "Operation":"Add Account",
                                     'Identifier ID / URLs':list_url[i],
-                                    'Result':'null',
-                                    'Nickname':'null',
-                                    'Platform':"%s账号异常"%platform,
+                                    'Result':'bilibili账号异常',
+                                    'Nickname':'-',
+                                    'Platform':platform,
                                     'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
                            }
                     with open('record.json', 'r', encoding='utf-8') as file:
@@ -132,6 +134,7 @@ def handAccounts():
                     wx_handle_url = 'https://api.newrank.cn/api/custom/kewo/monitor-account/manage?identifier=%s&opType=%s&platform=%s'%(list_url[i],opType,platform)
                     response = apiRequest(wx_handle_url)
                     wx_handle_msg = response.json()['msg']
+                    print(">>"*5,flush=True)
                     print('wx_handle_msg:',wx_handle_msg,flush=1)
                     sys.stdout.flush()
                     time.sleep(1)
@@ -157,19 +160,19 @@ def handAccounts():
                             datas = [datas]
 
                     updated_data = datas + data
-                    print(datas,flush=1)
+                    print("verify_msg:",wx_verify_msg,'Nickname:',wx_nickname,flush=True)
                     sys.stdout.flush()
                     with open("record.json","w", encoding='utf-8') as f:
                         json.dump(updated_data,f,indent=4,ensure_ascii=False)
                 except:
-                    print("Can't get weChat accounts data result",flush=1)
+                    print("检查你的account,请重新输入!!",flush=True)
                     sys.stdout.flush()
                     error_datas = {
                                     "Operation":"Add Account",
                                     'Identifier ID / URLs':list_url[i],
-                                    'Result':'null',
-                                    'Nickname':'null',
-                                    'Platform':"%s账号异常"%platform,
+                                    'Result':'WX账号异常',
+                                    'Nickname':'-',
+                                    'Platform':platform,
                                     'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
                            }
                     with open('record.json', 'r', encoding='utf-8') as file:
@@ -198,8 +201,8 @@ def handAccounts():
                         datas = {
                                     "Operation":"Add Account",
                                     'Identifier ID / URLs':list_url[i],
-                                    'Result':'获取identifier失败,%s账号异常'%platform,
-                                    'Nickname':'null',
+                                    'Result':'%s账号异常'%platform,
+                                    'Nickname':'-',
                                     'Platform':platform,
                                     'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
                             }
@@ -211,7 +214,7 @@ def handAccounts():
 
                         updated_data = datas + data
 
-                        print(datas,flush=True)
+                        print('Result:','%s账号异常'%platform,flush=True)
                         sys.stdout.flush()
                         with open("record.json","w", encoding='utf-8') as f:
                             json.dump(updated_data,f,indent=4,ensure_ascii=False)
@@ -240,7 +243,7 @@ def handAccounts():
                             try:
                                 nickname = verify_url_response.json()['data']['list'][0]['nickname']
                             except:
-                                nickname = 'null'
+                                nickname = '暂未获取到'
                                 print("No nickname has been obtained yet,please wait a moment",flush=True)
                                 sys.stdout.flush()
                         datas = {
@@ -259,7 +262,7 @@ def handAccounts():
 
                         updated_data = datas + data
 
-                        print(datas,flush=True)
+                        print("verify_msg:",verify_msg,'Nickname:',nickname,flush=True)
                         sys.stdout.flush()
                         with open("record.json","w", encoding='utf-8') as f:
                             json.dump(updated_data,f,indent=4,ensure_ascii=False)
@@ -269,9 +272,9 @@ def handAccounts():
                         error_datas = {
                                     "Operation":"Add Account",
                                     'Identifier ID / URLs':list_url[i],
-                                    'Result':'null',
-                                    'Nickname':'null',
-                                    'Platform':"%s账号异常"%platform,
+                                    'Result':"%s账号异常"%platform,
+                                    'Nickname':'-',
+                                    'Platform':platform,
                                     'Execution Time':time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
                            }
                         with open('record.json', 'r', encoding='utf-8') as file:
