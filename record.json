@@ -5,7 +5,15 @@
         "Result": "定制账号列表已存在此账号",
         "Nickname": "胸外科医生谷志涛",
         "Platform": "xhs",
-        "Execution Time": "2024-07-15 18:00:43"
+        "Execution Time": "2024-07-17 11:29:07"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "https://",
+        "Result": "xhs账号异常",
+        "Nickname": "-",
+        "Platform": "xhs",
+        "Execution Time": "2024-07-17 11:27:51"
     },
     {
         "Operation": "Add Account",
@@ -13,7 +21,23 @@
         "Result": "定制账号列表已存在此账号",
         "Nickname": "胸外科医生谷志涛",
         "Platform": "xhs",
-        "Execution Time": "2024-07-15 18:00:41"
+        "Execution Time": "2024-07-17 11:25:44"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "https://",
+        "Result": "xhs账号异常",
+        "Nickname": "-",
+        "Platform": "xhs",
+        "Execution Time": "2024-07-17 11:25:21"
+    },
+    {
+        "Operation": "Add Account",
+        "Identifier ID / URLs": "https://",
+        "Result": "ks账号异常",
+        "Nickname": "-",
+        "Platform": "ks",
+        "Execution Time": "2024-07-16 18:29:29"
     },
     {
         "Operation": "Add Account",

@@ -145,6 +145,7 @@ def handAccounts():
                     print('wx_handle_msg:',wx_handle_msg,flush=1)
                     sys.stdout.flush()
                     time.sleep(1)
+                    #遇到账号冲榜失败情况重试3次
                     k = 0
                     while wx_handle_msg == '账号冲榜失败' and k<3:
                             print('重试中...',flush=True)
@@ -265,7 +266,7 @@ def handAccounts():
                                 nickname = verify_url_response.json()['data']['list'][0]['nickname']
                             except:
                                 nickname = '暂未获取到'
-                                print("No nickname has been obtained yet,please wait a moment",flush=True)
+                                print("查询接口暂未返回nickname",flush=True)
                                 sys.stdout.flush()
                         datas = {
                                     "Operation":"Add Account",

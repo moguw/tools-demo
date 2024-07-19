@@ -64,7 +64,7 @@ app.post('/login', (req, res) => {
     const { username, password } = req.body;
   
     // 简单的登录验证逻辑
-    if ((username === 'administrator' && password === 'password') || (username === 'melody' && password === 'melody')) {
+    if ((username === 'admin' && password === 'admin') || (username === 'QA' && password === 'password')) {
       req.session.loggedIn = true;
       req.session.username = username;
       res.redirect('/dashboard');
@@ -200,7 +200,41 @@ app.post('/api/generate-report', (req, res) => {
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 const fs = require('fs');
+const readJSONFile = () => {
+    const data = fs.readFileSync('record.json');
+    return JSON.parse(data);
+};
 
+// 向所有连接的客户端发送数据
+const broadcastData = (data) => {
+    wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify(data));
+        }
+    });
+};
+
+// 每次有客户端连接时发送当前数据
+wss.on('connection', (ws) => {
+    const data = readJSONFile();
+    const platformCounts = data.reduce((acc, item) => {
+        acc[item.Platform] = (acc[item.Platform] || 0) + 1;
+        return acc;
+    }, {});
+
+    ws.send(JSON.stringify(platformCounts));
+});
+
+// 监控文件变化并广播更新数据
+fs.watchFile('record.json', (curr, prev) => {
+    const data = readJSONFile();
+    const platformCounts = data.reduce((acc, item) => {
+        acc[item.Platform] = (acc[item.Platform] || 0) + 1;
+        return acc;
+    }, {});
+
+    broadcastData(platformCounts);
+});
 // 读取 JSON 文件并处理数据
 // app.get('/test.html', (req, res) => {
 //     fs.readFile('record.json', 'utf8', (err, data) => {
